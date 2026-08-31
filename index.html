@@ -1,0 +1,2777 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VESPER</title>
+
+<meta name="description"
+content="VESPER — selección de prendas y piezas únicas.">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#070707;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* ================================
+   FONDO
+================================ */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255,30,50,.16),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(255,30,50,.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(255,255,255,.04),
+            transparent 35%
+        ),
+        #070707;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    opacity:.12;
+
+    background-image:
+        linear-gradient(
+            115deg,
+            transparent 0%,
+            rgba(255,255,255,.05) 50%,
+            transparent 100%
+        );
+
+    background-size:300px 300px;
+
+    animation:backgroundMove 18s linear infinite;
+}
+
+@keyframes backgroundMove{
+
+    0%{
+        transform:translateX(-80px);
+    }
+
+    50%{
+        transform:translateX(80px);
+    }
+
+    100%{
+        transform:translateX(-80px);
+    }
+
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(7,7,7,.86);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+}
+
+.navbar{
+
+    max-width:1250px;
+
+    height:72px;
+
+    margin:auto;
+
+    padding:0 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+
+/* ================================
+   LOGO
+================================ */
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:1000;
+
+    letter-spacing:4px;
+
+    display:flex;
+
+    white-space:nowrap;
+}
+
+.logo-ves{
+    color:#fff;
+}
+
+.logo-per{
+    color:#ff1f3d;
+}
+
+
+/* ================================
+   NAVEGACIÓN
+================================ */
+
+.nav{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+}
+
+.nav button{
+
+    border:0;
+
+    background:transparent;
+
+    color:#999;
+
+    padding:10px 13px;
+
+    border-radius:8px;
+
+    transition:.2s;
+}
+
+.nav button:hover{
+
+    color:#fff;
+
+    background:#181818;
+}
+
+
+/* ================================
+   FAVORITOS
+================================ */
+
+.fav-button{
+
+    position:relative;
+
+    padding-right:28px !important;
+}
+
+.fav-count{
+
+    position:absolute;
+
+    top:3px;
+
+    right:3px;
+
+    min-width:16px;
+
+    height:16px;
+
+    padding:0 4px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#ff1f3d;
+
+    color:#fff;
+
+    border-radius:50%;
+
+    font-size:9px;
+
+    font-weight:1000;
+}
+
+
+/* ================================
+   HERO
+================================ */
+
+.hero{
+
+    min-height:calc(100vh - 72px);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:60px 20px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,31,61,.14),
+            transparent 65%
+        );
+
+    filter:blur(30px);
+
+    pointer-events:none;
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:900px;
+}
+
+.hero-label{
+
+    color:#ff1f3d;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    letter-spacing:5px;
+
+    margin-bottom:22px;
+}
+
+.hero h1{
+
+    font-size:
+        clamp(70px,13vw,140px);
+
+    line-height:.82;
+
+    letter-spacing:-8px;
+
+    font-weight:1000;
+
+    white-space:nowrap;
+}
+
+.hero-ves{
+    color:#fff;
+}
+
+.hero-per{
+    color:#ff1f3d;
+}
+
+.hero p{
+
+    max-width:650px;
+
+    margin:32px auto;
+
+    color:#8e8e8e;
+
+    line-height:1.8;
+
+    font-size:17px;
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+
+/* ================================
+   BOTONES
+================================ */
+
+.primary{
+
+    border:0;
+
+    background:#ff1f3d;
+
+    color:#fff;
+
+    padding:16px 32px;
+
+    border-radius:9px;
+
+    font-weight:900;
+
+    transition:.25s;
+}
+
+.primary:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 12px 35px
+        rgba(255,31,61,.22);
+}
+
+.secondary{
+
+    border:1px solid #333;
+
+    background:#111;
+
+    color:#fff;
+
+    padding:16px 32px;
+
+    border-radius:9px;
+
+    font-weight:900;
+}
+
+.secondary:hover{
+
+    background:#1d1d1d;
+}
+
+
+/* ================================
+   COLECCIÓN
+================================ */
+
+#collection{
+
+    display:none;
+
+    max-width:1250px;
+
+    margin:auto;
+
+    padding:90px 20px;
+}
+
+#collection.active{
+    display:block;
+}
+
+.collection-head{
+
+    text-align:center;
+
+    margin-bottom:40px;
+}
+
+.collection-head small{
+
+    color:#ff1f3d;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    letter-spacing:4px;
+}
+
+.collection-head h2{
+
+    font-size:42px;
+
+    margin-top:10px;
+}
+
+.collection-head p{
+
+    color:#777;
+
+    margin-top:10px;
+}
+
+.collection-actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:25px;
+}
+
+.hide-button{
+
+    border:1px solid #333;
+
+    background:#111;
+
+    color:#aaa;
+
+    padding:12px 20px;
+
+    border-radius:8px;
+
+    font-weight:800;
+}
+
+.hide-button:hover{
+
+    background:#1d1d1d;
+
+    color:#fff;
+}
+
+
+/* ================================
+   FILTROS
+================================ */
+
+.filters{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:30px;
+
+    flex-wrap:wrap;
+}
+
+.search{
+
+    flex:1;
+
+    min-width:220px;
+
+    padding:14px;
+
+    background:#111;
+
+    color:#fff;
+
+    border:1px solid #292929;
+
+    border-radius:9px;
+
+    outline:none;
+}
+
+.search:focus{
+
+    border-color:#555;
+}
+
+.filters select{
+
+    padding:14px;
+
+    background:#111;
+
+    color:#fff;
+
+    border:1px solid #292929;
+
+    border-radius:9px;
+
+    outline:none;
+}
+
+
+/* ================================
+   PRODUCTOS
+================================ */
+
+.products{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:20px;
+}
+
+.product{
+
+    background:
+        rgba(18,18,18,.92);
+
+    border:1px solid #282828;
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    transition:.25s;
+}
+
+.product:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#444;
+
+    box-shadow:
+        0 20px 45px
+        rgba(0,0,0,.4);
+}
+
+
+/* ================================
+   RECUADRO PRODUCTO
+================================ */
+
+.image-wrap{
+
+    position:relative;
+}
+
+.product-image{
+
+    height:320px;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #202020,
+            #0c0c0c 65%
+        );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#292929;
+
+    font-size:35px;
+
+    font-weight:1000;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.product-image::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(255,31,61,.13);
+
+    box-shadow:
+        0 0 80px
+        rgba(255,31,61,.05);
+}
+
+.product-image::after{
+
+    content:".";
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+/* ================================
+   BADGE
+================================ */
+
+.badge{
+
+    position:absolute;
+
+    top:12px;
+
+    left:12px;
+
+    background:#ff1f3d;
+
+    color:#fff;
+
+    padding:6px 9px;
+
+    border-radius:6px;
+
+    font-size:10px;
+
+    font-weight:1000;
+}
+
+
+/* ================================
+   CORAZÓN
+================================ */
+
+.heart{
+
+    position:absolute;
+
+    top:11px;
+
+    right:11px;
+
+    width:38px;
+
+    height:38px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:rgba(0,0,0,.75);
+
+    color:#fff;
+
+    font-size:20px;
+
+    transition:.2s;
+}
+
+.heart:hover{
+
+    transform:scale(1.1);
+}
+
+.heart.active{
+
+    color:#ff1f3d;
+}
+
+
+/* ================================
+   INFORMACIÓN
+================================ */
+
+.product-info{
+
+    padding:17px;
+}
+
+.category{
+
+    color:#777;
+
+    font-size:10px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+}
+
+.product-name{
+
+    font-size:24px;
+
+    margin:8px 0;
+}
+
+.price{
+
+    color:#ff1f3d;
+
+    font-size:20px;
+
+    font-weight:900;
+
+    margin:12px 0;
+}
+
+.condition{
+
+    color:#aaa;
+
+    font-size:12px;
+
+    margin-bottom:6px;
+}
+
+.quality{
+
+    color:#ff1f3d;
+
+    font-size:12px;
+
+    font-weight:900;
+
+    margin-bottom:15px;
+}
+
+.view{
+
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #444;
+
+    border-radius:8px;
+
+    background:transparent;
+
+    color:#fff;
+
+    font-weight:900;
+
+    transition:.2s;
+}
+
+.view:hover{
+
+    background:#222;
+}
+
+
+/* ================================
+   PANEL FAVORITOS
+================================ */
+
+.favorites-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:4000;
+
+    background:rgba(0,0,0,.72);
+
+    backdrop-filter:blur(5px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.25s;
+}
+
+.favorites-overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+}
+
+.favorites-panel{
+
+    position:absolute;
+
+    right:0;
+
+    top:0;
+
+    width:min(460px,100%);
+
+    height:100%;
+
+    background:#0d0d0d;
+
+    border-left:1px solid #292929;
+
+    transform:translateX(100%);
+
+    transition:.3s;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.favorites-overlay.active
+.favorites-panel{
+
+    transform:translateX(0);
+}
+
+.favorites-header{
+
+    padding:22px;
+
+    border-bottom:1px solid #242424;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.favorites-header h2{
+
+    font-size:22px;
+}
+
+.favorites-header small{
+
+    display:block;
+
+    color:#ff1f3d;
+
+    font-size:9px;
+
+    font-weight:900;
+
+    letter-spacing:3px;
+
+    margin-bottom:4px;
+}
+
+.close-favorites{
+
+    width:36px;
+
+    height:36px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#222;
+
+    color:#fff;
+
+    font-size:20px;
+}
+
+.favorites-content{
+
+    flex:1;
+
+    overflow:auto;
+
+    padding:20px;
+}
+
+.empty-favorites{
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    color:#666;
+
+    padding:30px;
+}
+
+.empty-heart{
+
+    font-size:55px;
+
+    color:#ff1f3d;
+
+    margin-bottom:20px;
+}
+
+.favorite-item{
+
+    display:grid;
+
+    grid-template-columns:95px 1fr;
+
+    gap:15px;
+
+    padding:13px;
+
+    margin-bottom:12px;
+
+    background:#151515;
+
+    border:1px solid #292929;
+
+    border-radius:11px;
+}
+
+.favorite-image{
+
+    height:105px;
+
+    border-radius:8px;
+
+    background:
+        radial-gradient(
+            circle,
+            #222,
+            #0c0c0c
+        );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#333;
+
+    font-size:25px;
+
+    font-weight:1000;
+}
+
+.favorite-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+}
+
+.favorite-category{
+
+    color:#777;
+
+    font-size:9px;
+
+    font-weight:900;
+
+    text-transform:uppercase;
+}
+
+.favorite-title{
+
+    font-size:19px;
+
+    margin:4px 0;
+}
+
+.favorite-price{
+
+    color:#ff1f3d;
+
+    font-weight:900;
+
+    margin-bottom:9px;
+}
+
+.favorite-buttons{
+
+    display:flex;
+
+    gap:7px;
+}
+
+.favorite-view{
+
+    border:1px solid #444;
+
+    background:transparent;
+
+    color:#fff;
+
+    padding:7px 10px;
+
+    border-radius:6px;
+
+    font-size:10px;
+
+    font-weight:900;
+}
+
+.favorite-remove{
+
+    border:0;
+
+    background:#241014;
+
+    color:#ff1f3d;
+
+    padding:7px 10px;
+
+    border-radius:6px;
+
+    font-size:10px;
+
+    font-weight:900;
+}
+
+
+/* ================================
+   MODAL
+================================ */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:5000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.88);
+}
+
+.modal.active{
+
+    display:flex;
+}
+
+.modal-box{
+
+    position:relative;
+
+    width:min(900px,100%);
+
+    max-height:92vh;
+
+    overflow:auto;
+
+    background:#151515;
+
+    border:1px solid #333;
+
+    border-radius:16px;
+
+    padding:30px;
+}
+
+.close{
+
+    position:absolute;
+
+    top:15px;
+
+    right:15px;
+
+    width:36px;
+
+    height:36px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#292929;
+
+    color:#fff;
+
+    font-size:20px;
+}
+
+.product-detail{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:35px;
+}
+
+.detail-image{
+
+    min-height:500px;
+
+    border-radius:10px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #222,
+            #0b0b0b 70%
+        );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#333;
+
+    font-size:80px;
+
+    font-weight:1000;
+}
+
+.detail-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+}
+
+.detail-info h2{
+
+    font-size:38px;
+
+    margin:8px 0;
+}
+
+.detail-price{
+
+    color:#ff1f3d;
+
+    font-size:30px;
+
+    font-weight:900;
+
+    margin:15px 0;
+}
+
+.description{
+
+    color:#aaa;
+
+    line-height:1.7;
+
+    margin-bottom:20px;
+}
+
+.detail-row{
+
+    background:#1e1e1e;
+
+    border:1px solid #2d2d2d;
+
+    border-radius:9px;
+
+    padding:13px;
+
+    margin-bottom:9px;
+
+    color:#aaa;
+
+    font-size:13px;
+}
+
+.quality-detail{
+
+    color:#ff1f3d;
+
+    font-weight:900;
+}
+
+.vinted{
+
+    display:block;
+
+    width:100%;
+
+    margin-top:16px;
+
+    padding:16px;
+
+    text-align:center;
+
+    border-radius:9px;
+
+    background:#fff;
+
+    color:#111;
+
+    font-weight:1000;
+}
+
+.vinted:hover{
+
+    background:#ddd;
+}
+
+.vinted-note{
+
+    text-align:center;
+
+    color:#666;
+
+    font-size:11px;
+
+    margin-top:9px;
+}
+
+
+/* ================================
+   CONTACTO
+================================ */
+
+.contact{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:100px 20px;
+}
+
+.section-head{
+
+    text-align:center;
+
+    margin-bottom:40px;
+}
+
+.section-head small{
+
+    color:#ff1f3d;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    letter-spacing:4px;
+}
+
+.section-head h2{
+
+    font-size:40px;
+
+    margin-top:8px;
+}
+
+.section-head p{
+
+    color:#777;
+
+    margin-top:10px;
+}
+
+.contact-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:20px;
+}
+
+.contact-card{
+
+    background:#141414;
+
+    border:1px solid #292929;
+
+    border-radius:14px;
+
+    padding:30px;
+}
+
+.contact-card h3{
+
+    margin-bottom:12px;
+}
+
+.contact-card p{
+
+    color:#999;
+
+    line-height:1.7;
+}
+
+.contact-link{
+
+    display:inline-block;
+
+    margin-top:18px;
+
+    color:#ff1f3d;
+
+    font-weight:900;
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+footer{
+
+    border-top:1px solid #222;
+
+    padding:40px 20px;
+
+    text-align:center;
+
+    color:#666;
+
+    background:#060606;
+}
+
+footer strong{
+
+    letter-spacing:3px;
+
+    white-space:nowrap;
+}
+
+.footer-ves{
+    color:#fff;
+}
+
+.footer-per{
+    color:#ff1f3d;
+}
+
+.footer-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin-top:15px;
+}
+
+.footer-links a:hover{
+
+    color:#fff;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media(max-width:1000px){
+
+    .products{
+
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:760px){
+
+    .products{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .contact-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .product-detail{
+
+        grid-template-columns:1fr;
+    }
+
+    .nav button{
+
+        padding:8px;
+    }
+
+}
+
+@media(max-width:520px){
+
+    .products{
+
+        grid-template-columns:1fr;
+    }
+
+    .product-image{
+
+        height:380px;
+    }
+
+    .hero h1{
+
+        letter-spacing:-5px;
+
+        font-size:
+            clamp(55px,18vw,100px);
+    }
+
+    .logo{
+
+        font-size:23px;
+
+        letter-spacing:3px;
+    }
+
+}
+
+body.favorites-open{
+
+    overflow:hidden;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <span class="logo-ves">VES</span><span class="logo-per">PER</span>
+
+    </div>
+
+
+    <div class="nav">
+
+        <button onclick="showCollection()">
+            Colección
+        </button>
+
+
+        <button
+            class="fav-button"
+            onclick="openFavorites()">
+
+            ♡ Favoritos
+
+            <span
+                class="fav-count"
+                id="favCount">
+
+                0
+
+            </span>
+
+        </button>
+
+
+        <button onclick="goContact()">
+            Contacto
+        </button>
+
+    </div>
+
+</nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+    <div class="hero-label">
+        VESPER / OFFICIAL
+    </div>
+
+
+    <h1>
+
+        <span class="hero-ves">VES</span><span class="hero-per">PER</span>
+
+    </h1>
+
+
+    <p>
+
+        Selección de prendas, diferentes estilos
+        y tallas. Descubre la colección de VESPER.
+
+    </p>
+
+
+    <div class="hero-buttons">
+
+        <button
+            class="primary"
+            onclick="showCollection()">
+
+            VER COLECCIÓN
+
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- COLECCIÓN -->
+
+<section id="collection">
+
+<div class="collection-head">
+
+    <small>
+        VESPER / COLLECTION
+    </small>
+
+
+    <h2>
+        La colección
+    </h2>
+
+
+    <p>
+        Explora nuestras piezas seleccionadas.
+    </p>
+
+
+    <div class="collection-actions">
+
+        <button
+            class="hide-button"
+            onclick="hideCollection()">
+
+            OCULTAR COLECCIÓN
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="filters">
+
+    <input
+        id="search"
+        class="search"
+        type="text"
+        placeholder="Buscar..."
+        oninput="renderProducts()"
+    >
+
+
+    <select
+        id="category"
+        onchange="renderProducts()">
+
+        <option value="all">
+            Todas las categorías
+        </option>
+
+        <option value="Camisetas">
+            Camisetas
+        </option>
+
+        <option value="Sudaderas">
+            Sudaderas
+        </option>
+
+        <option value="Chaquetas">
+            Chaquetas
+        </option>
+
+        <option value="Pantalones">
+            Pantalones
+        </option>
+
+        <option value="Jerseys">
+            Jerseys
+        </option>
+
+        <option value="Accesorios">
+            Accesorios
+        </option>
+
+    </select>
+
+</div>
+
+
+<div
+    class="products"
+    id="products">
+</div>
+
+</section>
+
+
+<!-- CONTACTO -->
+
+<section
+    class="contact"
+    id="contact">
+
+<div class="section-head">
+
+    <small>
+        CONTACT
+    </small>
+
+
+    <h2>
+        ¿Tienes alguna pregunta?
+    </h2>
+
+
+    <p>
+        Estamos disponibles para ayudarte.
+    </p>
+
+</div>
+
+
+<div class="contact-grid">
+
+
+<div class="contact-card">
+
+    <h3>
+        📩 Contacto
+    </h3>
+
+
+    <p>
+
+        Para cualquier pregunta sobre
+        tallas, prendas o estado,
+        puedes escribirnos.
+
+    </p>
+
+
+    <a
+        class="contact-link"
+        href="mailto:vesper.store26@gmail.com">
+
+        vesper.store26@gmail.com
+
+    </a>
+
+</div>
+
+
+<div class="contact-card">
+
+    <h3>
+        🔗 Vinted
+    </h3>
+
+
+    <p>
+
+        Consulta nuestras prendas
+        directamente en nuestro perfil
+        de Vinted.
+
+    </p>
+
+
+    <a
+        class="contact-link"
+        href="https://www.vinted.es/member/3181449269"
+        target="_blank"
+        rel="noopener">
+
+        VER VINTED →
+
+    </a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- PANEL FAVORITOS -->
+
+<div
+    class="favorites-overlay"
+    id="favoritesOverlay"
+    onclick="closeFavoritesOutside(event)">
+
+
+<div class="favorites-panel">
+
+
+<div class="favorites-header">
+
+    <div>
+
+        <small>
+            VESPER / SAVED
+        </small>
+
+        <h2>
+            Favoritos
+        </h2>
+
+    </div>
+
+
+    <button
+        class="close-favorites"
+        onclick="closeFavorites()">
+
+        ×
+
+    </button>
+
+</div>
+
+
+<div
+    class="favorites-content"
+    id="favoriteProducts">
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div
+    class="modal"
+    id="productModal">
+
+<div class="modal-box">
+
+    <button
+        class="close"
+        onclick="closeModal()">
+
+        ×
+
+    </button>
+
+
+    <div id="productDetail"></div>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <strong>
+
+        <span class="footer-ves">VES</span><span class="footer-per">PER</span>
+
+    </strong>
+
+
+    <p style="margin-top:8px;">
+        Selected pieces · Official
+    </p>
+
+
+    <div class="footer-links">
+
+        <a href="#contact">
+            Contacto
+        </a>
+
+
+        <a
+            href="https://www.vinted.es/member/3181449269"
+            target="_blank"
+            rel="noopener">
+
+            Vinted
+
+        </a>
+
+    </div>
+
+
+    <p style="margin-top:20px;">
+        © 2026 VESPER
+    </p>
+
+</footer>
+
+
+<script>
+
+
+/* ================================
+   VINTED
+================================ */
+
+const VINTED_URL =
+"https://www.vinted.es/member/3181449269";
+
+
+/* ================================
+   PRODUCTOS
+================================ */
+
+const products = [
+
+{
+    id:1,
+    name:".",
+    price:0,
+    category:"Chaquetas",
+    sizes:["S","M","L"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:2,
+    name:".",
+    price:0,
+    category:"Camisetas",
+    sizes:["S","M","L","XL"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:3,
+    name:".",
+    price:0,
+    category:"Sudaderas",
+    sizes:["M","L","XL"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:4,
+    name:".",
+    price:0,
+    category:"Chaquetas",
+    sizes:["S","M","L"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:5,
+    name:".",
+    price:0,
+    category:"Jerseys",
+    sizes:["S","M","L","XL"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:6,
+    name:".",
+    price:0,
+    category:"Pantalones",
+    sizes:["S","M","L","XL"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:7,
+    name:".",
+    price:0,
+    category:"Sudaderas",
+    sizes:["S","M","L"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:8,
+    name:".",
+    price:0,
+    category:"Accesorios",
+    sizes:["Única"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:9,
+    name:".",
+    price:0,
+    category:"Chaquetas",
+    sizes:["M","L","XL"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:10,
+    name:".",
+    price:0,
+    category:"Camisetas",
+    sizes:["S","M","L"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:11,
+    name:".",
+    price:0,
+    category:"Jerseys",
+    sizes:["M","L"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:12,
+    name:".",
+    price:0,
+    category:"Chaquetas",
+    sizes:["S","M","L","XL"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:13,
+    name:".",
+    price:0,
+    category:"Pantalones",
+    sizes:["S","M","L"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:14,
+    name:".",
+    price:0,
+    category:"Jerseys",
+    sizes:["S","M","L"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:15,
+    name:".",
+    price:0,
+    category:"Chaquetas",
+    sizes:["S","M","L"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:16,
+    name:".",
+    price:0,
+    category:"Camisetas",
+    sizes:["M","L","XL"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:17,
+    name:".",
+    price:0,
+    category:"Chaquetas",
+    sizes:["S","M","L","XL"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:18,
+    name:".",
+    price:0,
+    category:"Sudaderas",
+    sizes:["S","M","L","XL"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:19,
+    name:".",
+    price:0,
+    category:"Pantalones",
+    sizes:["M","L","XL"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+},
+
+{
+    id:20,
+    name:".",
+    price:0,
+    category:"Camisetas",
+    sizes:["S","M","L"],
+    condition:"Excelente estado",
+    description:"Pieza seleccionada de calidad excelente."
+}
+
+];
+
+
+/* ================================
+   FAVORITOS
+================================ */
+
+let favorites =
+JSON.parse(
+    localStorage.getItem(
+        "vesper-favorites"
+    )
+) || [];
+
+
+/* ================================
+   PRECIO
+================================ */
+
+function formatPrice(price){
+
+    return price
+        .toFixed(2)
+        .replace(".",",") + " €";
+
+}
+
+
+/* ================================
+   CONTADOR
+================================ */
+
+function updateFavoriteCount(){
+
+    document.getElementById(
+        "favCount"
+    ).textContent =
+        favorites.length;
+
+}
+
+
+/* ================================
+   COLECCIÓN
+================================ */
+
+function showCollection(){
+
+    document
+        .getElementById("collection")
+        .classList
+        .add("active");
+
+    renderProducts();
+
+    setTimeout(() => {
+
+        document
+            .getElementById("collection")
+            .scrollIntoView({
+                behavior:"smooth"
+            });
+
+    },100);
+
+}
+
+
+function hideCollection(){
+
+    document
+        .getElementById("collection")
+        .classList
+        .remove("active");
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+/* ================================
+   CONTACTO
+================================ */
+
+function goContact(){
+
+    document
+        .getElementById("contact")
+        .scrollIntoView({
+
+            behavior:"smooth"
+
+        });
+
+}
+
+
+/* ================================
+   PRODUCTOS
+================================ */
+
+function renderProducts(){
+
+    const container =
+        document.getElementById(
+            "products"
+        );
+
+    const search =
+        document.getElementById(
+            "search"
+        ).value.toLowerCase();
+
+    const category =
+        document.getElementById(
+            "category"
+        ).value;
+
+
+    const filtered =
+        products.filter(product => {
+
+            const text =
+                product.category.toLowerCase();
+
+            return (
+
+                text.includes(search)
+
+                &&
+
+                (
+                    category === "all"
+                    ||
+                    product.category === category
+                )
+
+            );
+
+        });
+
+
+    container.innerHTML =
+
+    filtered.map(product => {
+
+        const liked =
+            favorites.includes(
+                product.id
+            );
+
+
+        return `
+
+        <article class="product">
+
+            <div class="image-wrap">
+
+                <div class="product-image"></div>
+
+
+                ${
+                    product.id <= 6
+
+                    ?
+
+                    `<div class="badge">
+                        DESTACADO
+                    </div>`
+
+                    :
+
+                    ""
+                }
+
+
+                <button
+                    class="heart ${
+                        liked ? "active" : ""
+                    }"
+                    onclick="toggleFavorite(
+                        ${product.id}
+                    )">
+
+                    ${
+                        liked
+                        ? "♥"
+                        : "♡"
+                    }
+
+                </button>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="category">
+                    ${product.category}
+                </div>
+
+
+                <h3 class="product-name">
+                    .
+                </h3>
+
+
+                <div class="price">
+                    ${formatPrice(product.price)}
+                </div>
+
+
+                <div class="condition">
+                    ✓ ${product.condition}
+                </div>
+
+
+                <div class="quality">
+                    ★ CALIDAD EXCELENTE
+                </div>
+
+
+                <button
+                    class="view"
+                    onclick="openProduct(
+                        ${product.id}
+                    )">
+
+                    VER PRENDA
+
+                </button>
+
+            </div>
+
+        </article>
+
+        `;
+
+    }).join("");
+
+}
+
+
+/* ================================
+   FAVORITOS
+================================ */
+
+function openFavorites(){
+
+    renderFavorites();
+
+    document
+        .getElementById(
+            "favoritesOverlay"
+        )
+        .classList
+        .add("active");
+
+    document.body.classList.add(
+        "favorites-open"
+    );
+
+}
+
+
+function closeFavorites(){
+
+    document
+        .getElementById(
+            "favoritesOverlay"
+        )
+        .classList
+        .remove("active");
+
+    document.body.classList.remove(
+        "favorites-open"
+    );
+
+}
+
+
+function closeFavoritesOutside(event){
+
+    if(
+        event.target.id ===
+        "favoritesOverlay"
+    ){
+
+        closeFavorites();
+
+    }
+
+}
+
+
+/* ================================
+   RENDER FAVORITOS
+================================ */
+
+function renderFavorites(){
+
+    const container =
+        document.getElementById(
+            "favoriteProducts"
+        );
+
+
+    const saved =
+        products.filter(
+            product =>
+                favorites.includes(
+                    product.id
+                )
+        );
+
+
+    if(saved.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-favorites">
+
+                <div class="empty-heart">
+                    ♡
+                </div>
+
+                <strong>
+                    No tienes favoritos
+                </strong>
+
+                <p style="
+                    margin-top:10px;
+                    line-height:1.6;
+                ">
+
+                    Pulsa el corazón de una
+                    prenda para guardarla aquí.
+
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+
+    saved.map(product => {
+
+        return `
+
+        <div class="favorite-item">
+
+            <div class="favorite-image">
+                .
+            </div>
+
+
+            <div class="favorite-info">
+
+                <div class="favorite-category">
+                    ${product.category}
+                </div>
+
+
+                <div class="favorite-title">
+                    .
+                </div>
+
+
+                <div class="favorite-price">
+                    ${formatPrice(product.price)}
+                </div>
+
+
+                <div class="favorite-buttons">
+
+                    <button
+                        class="favorite-view"
+                        onclick="openProduct(
+                            ${product.id}
+                        )">
+
+                        VER
+
+                    </button>
+
+
+                    <button
+                        class="favorite-remove"
+                        onclick="toggleFavorite(
+                            ${product.id}
+                        )">
+
+                        QUITAR
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+    }).join("");
+
+}
+
+
+/* ================================
+   AÑADIR / QUITAR FAVORITO
+================================ */
+
+function toggleFavorite(id){
+
+    if(
+        favorites.includes(id)
+    ){
+
+        favorites =
+            favorites.filter(
+                item => item !== id
+            );
+
+    }else{
+
+        favorites.push(id);
+
+    }
+
+
+    localStorage.setItem(
+        "vesper-favorites",
+        JSON.stringify(favorites)
+    );
+
+
+    updateFavoriteCount();
+
+    renderProducts();
+
+    renderFavorites();
+
+}
+
+
+/* ================================
+   DETALLE PRODUCTO
+================================ */
+
+function openProduct(id){
+
+    const product =
+        products.find(
+            p => p.id === id
+        );
+
+
+    document.getElementById(
+        "productDetail"
+    ).innerHTML = `
+
+        <div class="product-detail">
+
+
+            <div class="detail-image">
+                .
+            </div>
+
+
+            <div class="detail-info">
+
+
+                <div class="category">
+                    ${product.category}
+                </div>
+
+
+                <h2>
+                    .
+                </h2>
+
+
+                <div class="detail-price">
+                    ${formatPrice(product.price)}
+                </div>
+
+
+                <p class="description">
+                    ${product.description}
+                </p>
+
+
+                <div class="detail-row">
+
+                    📏 Tallas disponibles:
+
+                    <strong>
+                        ${product.sizes.join(", ")}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row">
+
+                    ✓ Estado:
+
+                    <strong>
+                        ${product.condition}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-row quality-detail">
+
+                    ★ Calidad excelente
+
+                </div>
+
+
+                <button
+                    class="view"
+                    onclick="toggleFavorite(
+                        ${product.id}
+                    )"
+                    style="margin-top:10px">
+
+                    ${
+                        favorites.includes(product.id)
+
+                        ?
+
+                        "♥ QUITAR DE FAVORITOS"
+
+                        :
+
+                        "♡ AÑADIR A FAVORITOS"
+                    }
+
+                </button>
+
+
+                <a
+                    class="vinted"
+                    href="${VINTED_URL}"
+                    target="_blank"
+                    rel="noopener">
+
+                    🔗 VER EN VINTED
+
+                </a>
+
+
+                <div class="vinted-note">
+
+                    Se abrirá directamente
+                    el perfil de VESPER.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document
+        .getElementById(
+            "productModal"
+        )
+        .classList
+        .add("active");
+
+}
+
+
+function closeModal(){
+
+    document
+        .getElementById(
+            "productModal"
+        )
+        .classList
+        .remove("active");
+
+}
+
+
+/* ================================
+   CERRAR MODAL
+================================ */
+
+window.addEventListener(
+    "click",
+    function(event){
+
+        if(
+            event.target.classList
+                .contains("modal")
+        ){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* ================================
+   ESC
+================================ */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Escape"
+        ){
+
+            closeModal();
+
+            closeFavorites();
+
+        }
+
+    }
+);
+
+
+/* ================================
+   INICIO
+================================ */
+
+updateFavoriteCount();
+
+renderProducts();
+
+renderFavorites();
+
+</script>
+
+</body>
+
+</html>
+```
